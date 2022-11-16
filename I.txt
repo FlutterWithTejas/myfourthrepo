@@ -1,0 +1,130 @@
+//this program demonstrate nested if.....else
+import 'dart:io';
+
+double calculateDiscount(int price, int percent) {
+  return ((percent / 100) * price);
+}
+
+String vaccinationStatus(String vcsSratus) {
+  if (vcsSratus.contains('true')) {
+    return 'Vaccinated';
+  } else {
+    return 'Not Vaccinated';
+  }
+}
+
+void main() {
+  var discAmt;
+  var discP;
+  print('enter name');
+  var nameBuyer = stdin.readLineSync();
+
+  print('enter age');
+  var ageBuyer = int.parse(stdin.readLineSync()!);
+
+  print('enter gender(male/female)');
+  var genderBuyer = stdin.readLineSync();
+
+  print('enter purchase amount');
+  var pAmountBuyer = int.parse(stdin.readLineSync()!);
+
+  print('enter vaccination status(true/false)');
+  String vcsBuyerStatus = stdin.readLineSync()!;
+
+  if (vcsBuyerStatus.contains('true')) {
+    print('discount given');
+    if (ageBuyer >= 60) {
+      if (genderBuyer == 'male') {
+        if (pAmountBuyer >= 200000 && pAmountBuyer < 300000) {
+          print('Discount - 20%');
+          discP = 20;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 20)}');
+          discAmt = calculateDiscount(pAmountBuyer, 20);
+        } else if (pAmountBuyer >= 300000 && pAmountBuyer < 400000) {
+          print('Discount - 30%');
+          discP = 30;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 30)}');
+          discAmt = calculateDiscount(pAmountBuyer, 30);
+        } else if (pAmountBuyer >= 40000 && pAmountBuyer < 500000) {
+          print('Discount - 40%');
+          discP = 40;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 40)}');
+          discAmt = calculateDiscount(pAmountBuyer, 40);
+        }
+      } else if (genderBuyer == 'female') {
+        if (pAmountBuyer >= 200000 && pAmountBuyer < 300000) {
+          print('Discount - 22%');
+          discP = 22;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 22)}');
+          discAmt = calculateDiscount(pAmountBuyer, 22);
+        } else if (pAmountBuyer >= 300000 && pAmountBuyer < 400000) {
+          print('Discount - 32%');
+          discP = 32;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 32)}');
+          discAmt = calculateDiscount(pAmountBuyer, 32);
+        } else if (pAmountBuyer >= 40000 && pAmountBuyer < 500000) {
+          print('Discount - 42%');
+          discP = 42;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 42)}');
+          discAmt = calculateDiscount(pAmountBuyer, 42);
+        }
+      }
+    } else {
+      if (genderBuyer == 'male') {
+        if (pAmountBuyer >= 200000 && pAmountBuyer < 300000) {
+          print('Discount - 15%');
+          discP = 15;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 15)}');
+          discAmt = calculateDiscount(pAmountBuyer, 15);
+        } else if (pAmountBuyer >= 300000 && pAmountBuyer < 400000) {
+          print('Discount - 25%');
+          discP = 25;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 25)}');
+          discAmt = calculateDiscount(pAmountBuyer, 25);
+        } else if (pAmountBuyer >= 400000 && pAmountBuyer < 500000) {
+          print('Discount - 35%');
+          discP = 35;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 35)}');
+          discAmt = calculateDiscount(pAmountBuyer, 35);
+        }
+      } else if (genderBuyer == 'female') {
+        if (pAmountBuyer >= 200000 && pAmountBuyer < 300000) {
+          print('Discount - 18%');
+          discP = 18;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 18)}');
+          discAmt = calculateDiscount(pAmountBuyer, 18);
+        } else if (pAmountBuyer >= 300000 && pAmountBuyer < 400000) {
+          print('Discount - 28%');
+          discP = 28;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 28)}');
+          discAmt = calculateDiscount(pAmountBuyer, 28);
+        } else if (pAmountBuyer >= 400000 && pAmountBuyer < 500000) {
+          print('Discount - 38%');
+          discP = 38;
+          print('Discount Amount = ${calculateDiscount(pAmountBuyer, 38)}');
+          discAmt = calculateDiscount(pAmountBuyer, 38);
+        }
+      }
+    }
+  } else {
+    print('discount not given');
+    print('Discount =${calculateDiscount(pAmountBuyer, 0)}');
+    print('Net Amount = $pAmountBuyer');
+  }
+
+  String vStatus = vaccinationStatus(vcsBuyerStatus);
+  print('\n');
+  print('-------------------------------------------------------');
+  print('Your Bill');
+  print('${nameBuyer}==========>                      ${vStatus}');
+  print('${ageBuyer}');
+  print('${genderBuyer}');
+  print('purchase amount ${pAmountBuyer}');
+  if (vcsBuyerStatus.contains('false')) discP = 0;
+  print('Discount = ${discP}%');
+  if (vcsBuyerStatus.contains('false')) discAmt = 0;
+  print('Discount Amount = ${discAmt}');
+  print('-------------------------------------------------------');
+  print('Amount Payable = ${pAmountBuyer - discAmt}');
+  print('=======================================================');
+}
